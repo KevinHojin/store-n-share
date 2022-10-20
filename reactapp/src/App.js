@@ -1,12 +1,16 @@
 import './App.css';
 import React, { useMemo } from "react";
+import { useState } from "react";
 import { useCallback } from "react";
 import { Head } from './component/header.js';
 import { Drop } from './component/Drop.js';
+import { FileList } from './component/FileList.js';
 import { useDropzone } from "react-dropzone";
 
 
 function App() {
+  const [files, setFiles] = useState([]);
+
   const baseStyle = {
     flex: 1,
     display: "flex",
@@ -15,7 +19,7 @@ function App() {
     padding: "20px",
     borderWidth: 2,
     borderRadius: 2,
-    borderColor: "#eeeeee",
+    borderColor: "darkgray",
     borderStyle: "dashed",
     backgroundColor: "#fafafa",
     color: "#bdbdbd",
@@ -35,13 +39,23 @@ function App() {
     borderColor: "#ff1744",
   };
 
+  const focusStyle = {
+    borderColor: "#2196f3",
+  };
+
   const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-  }, [])
+    console.log("accepted files:", acceptedFiles);
+    //const fileList = files;
+    //fileList.push(acceptedFiles);
+    const newFile = acceptedFiles[0]
+    setFiles([...files,newFile]);
+    console.log(files)
+  },)
 
   const {
     getRootProps,
     getInputProps,
+    isFocused,
     isDragActive,
     isDragAccept,
     isDragReject,
@@ -53,8 +67,9 @@ function App() {
       ...(isDragActive ? activeStyle : {}),
       ...(isDragAccept ? acceptStyle : {}),
       ...(isDragReject ? rejectStyle : {}),
+      ...(isFocused ? focusStyle : {}),
     }),
-    [isDragActive, isDragReject, isDragAccept]
+    [isDragActive, isDragReject, isDragAccept, isFocused]
   );
 
 
@@ -65,6 +80,10 @@ function App() {
         getInputProps={getInputProps}
         getRootProps={getRootProps}
         style={style}
+      />
+      <FileList
+        fileLists={files}
+        setFiles={setFiles}
       />
     </div>
   );

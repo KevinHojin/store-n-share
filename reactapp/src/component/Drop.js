@@ -1,4 +1,6 @@
 import * as React from 'react';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import Grid from '@mui/material/Grid';
 //import { useDropzone } from "react-dropzone";
 
  export const Drop = ({ getInputProps, getRootProps, style }) => {
@@ -10,9 +12,13 @@ import * as React from 'react';
           <p className='tab'>3. Click upload button to upload your files</p>
           <p className='tab'>4. Enjoy! </p>
         <div {...getRootProps({style})}>
-        <input sx={{ height:500 }} {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-            <button className="btn btn-secondary">Select</button>
+        <input className="drop" sx={{ height:500 }} {...getInputProps()} />
+            <Grid item>
+                <FileUploadOutlinedIcon style={{fontSize: 30, color: '#009be5',}}></FileUploadOutlinedIcon>
+            </Grid>
+            <Grid item>
+                <p>Drag 'n' drop some files here, or click to select files</p>
+            </Grid>
         </div>
         </section>
      );
