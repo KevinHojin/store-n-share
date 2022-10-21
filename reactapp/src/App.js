@@ -10,6 +10,8 @@ import { useDropzone } from "react-dropzone";
 
 function App() {
   const [files, setFiles] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [upload, setUpload] = useState([]);
 
   const baseStyle = {
     flex: 1,
@@ -48,8 +50,12 @@ function App() {
     //const fileList = files;
     //fileList.push(acceptedFiles);
     const newFile = acceptedFiles[0]
-    setFiles([...files,newFile]);
+    //do not let duplicate upload
+    if(!(files.includes(newFile))){
+      setFiles([...files,newFile]);
+    }
     console.log(files)
+    console.log(files.includes(newFile))
   },)
 
   const {
@@ -84,6 +90,10 @@ function App() {
       <FileList
         fileLists={files}
         setFiles={setFiles}
+        checked={checked}
+        setChecked={setChecked}
+        upload={upload}
+        setUpload={setUpload}
       />
     </div>
   );
