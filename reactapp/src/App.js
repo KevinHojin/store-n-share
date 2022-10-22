@@ -12,6 +12,7 @@ function App() {
   const [files, setFiles] = useState([]);
   const [checked, setChecked] = useState([]);
   const [upload, setUpload] = useState([]);
+  const [openAlert, setOpenAlert] = useState();
 
   const baseStyle = {
     flex: 1,
@@ -94,6 +95,8 @@ function App() {
         setChecked={setChecked}
         upload={upload}
         setUpload={setUpload}
+        openAlert={openAlert}
+        setOpenAlert={setOpenAlert}
       />
     </div>
   );

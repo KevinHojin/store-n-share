@@ -2,27 +2,22 @@ import os
 from flask import Flask, jsonify, request, json, send_file, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+from pathlib import Path
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='Downloads')
 CORS(app)
 
 @app.route("/download", methods=['POST'])
 def download():
     request_data = request.files['file']
-    print(request_data.filename)
-    #for i in range(len(request_data['content'])):
-        #path=request_data['content'][i]['path']
+    print(request_data)
     filename = secure_filename(request_data.filename)
-    new_name = f'fresh_file'
-        #uploads = os.path.join(path)
-    saved = os.path.join('uploaded',new_name)
+    saved = os.path.join(app.static_folder,filename)
     request_data.save(saved)
-    return send_file(saved, mimetype="*", download_name = 'fresh_file', as_attachment=True)
-    #send_file(filename)
-    print(filename)
-    response = jsonify({'some': 'data'})
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-    return "response"
+    print("sending file.. ")
+    #return send_file(saved, as_attachment=True)
+    return send_from_directory('Downloads', filename, as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
           <p className='tab'>1. Click 'Select' button or drag 'n' drop the files below</p> 
           <p className='tab'>2. Choose the files you want to upload</p>
           <p className='tab'>3. Click upload button to upload your files</p>
-          <p className='tab'>4. Enjoy! </p>
+          <p className='tab'>4. Your selected file will be downloaded under your local Store-N-Share folder</p>
         <div {...getRootProps({style})}>
         <input className="drop" sx={{ height:500 }} {...getInputProps()} />
             <Grid item>
