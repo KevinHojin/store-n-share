@@ -2,7 +2,6 @@ import React from 'react';
 import DoneIcon from '@mui/icons-material/Done';
 import { Button, Checkbox, Typography } from "@mui/material";
 import { useState, useEffect } from 'react';
-//import { Checkbox } from '@mui/material/Checkbox';
 
 export const Files = ({ file, checked, setChecked, upload, setUpload }) => {
     function handleChange(){
