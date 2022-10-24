@@ -8,7 +8,7 @@ To set up front end, simply go to the ```'STORE-N-SHARE/reactapp'```. Then on th
 
 
 # Setting up Backend (Flask)
-To set up back end, simply go to the ```'STORE-N-SHARE/flask-backend'```. Then on the command line, do ```python3 -m venv venv``` to create a virtual environment. Then to activate, do ```sourve venv/bin/activate```. After being activated, please install Flask by doing ```pip3 install Flask```.
+To set up back end, simply go to the ```'STORE-N-SHARE/flask-backend'```. Then on the command line, do ```python3 -m venv venv``` to create a virtual environment. Then to activate, do ```source venv/bin/activate```. After being activated, please install Flask by doing ```pip3 install Flask```.
 
 
 # How to test?
